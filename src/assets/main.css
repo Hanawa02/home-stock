@@ -1,0 +1,28 @@
+@import './base.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#app {
+  @apply max-w-screen-xl mx-auto my-0 p-8 font-normal;
+  @apply lg:grid lg:grid-cols-2 lg:py-0;
+}
+
+a,
+.green {
+  @apply text-green-500 p-1 transition-all duration-300;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+}
