@@ -17,6 +17,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/firebase": "^10.9.0",
     "firebase": "^10.9.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
