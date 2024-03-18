@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import routes from './router/routes'
+import Toasts from '@/components/atoms/toasts/index.vue'
 
 const homePath = routes.home.path
 const aboutPath = routes.about.path
@@ -24,6 +25,7 @@ const aboutPath = routes.about.path
   </header>
 
   <RouterView />
+  <Toasts />
 </template>
 
 <style scoped>
