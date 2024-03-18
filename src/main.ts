@@ -7,7 +7,7 @@ import App from './App.vue'
 import router from './router'
 
 import { VueFire } from 'vuefire'
-import { firebaseApp } from './database/firebase'
+import { firebaseApp } from './firebase'
 
 const app = createApp(App)
 
