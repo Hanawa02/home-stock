@@ -3,16 +3,13 @@ import { RouterView } from 'vue-router'
 import AuthView from '@/views/auth/AuthView.vue'
 import Toasts from '@/components/atoms/toasts/index.vue'
 
-import { getAuth } from 'firebase/auth'
-import { useAuth } from '@vueuse/firebase/useAuth'
-import { firebaseApp } from '@/firebase'
+import { useCurrentUser } from 'vuefire'
 
-const auth = getAuth(firebaseApp)
-const { isAuthenticated } = useAuth(auth)
+const user = useCurrentUser()
 </script>
 
 <template>
   <Toasts />
-  <RouterView v-if="isAuthenticated" />
+  <RouterView v-if="user !== null" />
   <AuthView v-else />
 </template>
