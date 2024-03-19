@@ -29,16 +29,19 @@
           <path fill="none" d="M0 0h48v48H0z"></path>
         </svg>
       </div>
-      <span class="gsi-material-button-contents">Sign in with Google</span>
-      <span style="display: none">Sign in with Google</span>
+      <span class="gsi-material-button-contents">{{ translation.signInWithGoogle() }}</span>
+      <span style="display: none">{{ translation.signInWithGoogle() }}</span>
     </div>
   </button>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useToast } from '@/composables/toast'
+import { useLocalization } from '@/composables/localization'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { firebaseApp } from '@/firebase'
+import translations from './translations'
 
 const provider = new GoogleAuthProvider()
 const auth = getAuth(firebaseApp)
@@ -56,6 +59,8 @@ async function signIn() {
       })
     })
 }
+const localization = useLocalization()
+const translation = computed(() => translations[localization.locale.value])
 </script>
 
 <style scoped>
@@ -173,3 +178,4 @@ async function signIn() {
   opacity: 8%;
 }
 </style>
+@/composables/localization
