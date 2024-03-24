@@ -2,18 +2,7 @@
   <div class="flex flex-col">
     <button class="flex items-center gap-2" @click="togglePopover">
       <div class="truncate text-clip text-nowrap w-28 capitalize text-right">{{ visibleName }}</div>
-      <img
-        v-if="user?.photoURL"
-        class="h-8 w-8 rounded-full"
-        :src="user?.photoURL"
-        alt="Profile picture"
-      />
-      <div
-        v-else
-        class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center text-blue-600"
-      >
-        {{ userInitials }}
-      </div>
+      <UserBadge size="medium" :user="user" />
     </button>
     <div class="relative">
       <div
@@ -39,6 +28,8 @@ import { useRouter } from 'vue-router'
 import routes from '@/router/routes'
 import { useToast } from '@/composables/toast'
 
+import UserBadge from '@/components/atoms/user-badge/index.vue'
+
 const localization = useLocalization()
 const translation = computed(() => {
   return translations[localization.locale.value]
@@ -61,18 +52,6 @@ const visibleName = computed(() => {
   }
 
   return finalName
-})
-
-const userInitials = computed(() => {
-  if (!nameParts.value || nameParts.value.length === 0) {
-    return 'You'
-  }
-
-  if (nameParts.value && nameParts.value?.length === 1) {
-    return nameParts.value[0][0]
-  }
-
-  return nameParts.value[0][0] + nameParts.value[1][0]
 })
 
 const isPopoverOpen = ref(false)
