@@ -8,5 +8,10 @@ export const useHomeStore = defineStore('homes', () => {
   const user = useCurrentUser()
 
   const userHomes = computed(() => useCollection(homes(user.value?.uid || '')))
-  return { homes: userHomes }
+
+  function homeById(id: string) {
+    return userHomes.value.value?.find((home) => home.id === id)
+  }
+
+  return { homes: userHomes, homeById }
 })
