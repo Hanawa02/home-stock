@@ -14,7 +14,7 @@ const home = computed(() => homeStore.homeById(homeId.value.toString()))
 
 <template>
   <main v-if="home">
-    <h1 class="text-3xl text-center font-bold py-4 lg:text-5xl text-blue-600 capitalize">
+    <h1>
       <GoBackButton class="absolute left-2" />
       {{ home.name }}
     </h1>

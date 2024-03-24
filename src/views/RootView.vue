@@ -16,7 +16,7 @@ const translation = computed(() => translations[localization.locale.value])
 
 <template>
   <main>
-    <h1 class="text-3xl text-center font-bold py-4 lg:text-5xl text-blue-600">
+    <h1>
       {{ translation.rootView.homes() }}
     </h1>
     <ul class="p-4 grid md:grid-cols-2 lg:grid-cols-4">
