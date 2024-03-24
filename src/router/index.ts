@@ -8,6 +8,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: routes.root.path, name: routes.root.name, component: RootView },
+    { path: routes.homes.item.path, name: routes.homes.item.name, component: HomeView }
   ]
 })
 
