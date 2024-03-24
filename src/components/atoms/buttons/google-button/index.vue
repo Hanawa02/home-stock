@@ -39,12 +39,12 @@
 import { computed } from 'vue'
 import { useToast } from '@/composables/toast'
 import { useLocalization } from '@/composables/localization'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { firebaseApp } from '@/firebase'
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { auth } from '@/firebase'
+
 import translations from './translations'
 
 const provider = new GoogleAuthProvider()
-const auth = getAuth(firebaseApp)
 
 async function signIn() {
   return signInWithPopup(auth, provider)
