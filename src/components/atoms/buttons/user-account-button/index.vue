@@ -2,7 +2,7 @@
   <div class="flex flex-col">
     <button class="flex items-center gap-2" @click="togglePopover">
       <div class="truncate text-clip text-nowrap w-28 capitalize text-right">{{ visibleName }}</div>
-      <UserBadge size="medium" :user="user" />
+      <UserBadge size="medium" :user="user ?? undefined" />
     </button>
     <div class="relative">
       <div

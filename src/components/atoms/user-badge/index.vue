@@ -17,8 +17,8 @@
 import { computed } from 'vue'
 
 type User = {
-  photoURL?: string
-  displayName?: string
+  photoURL: string | null
+  displayName: string | null
 }
 
 interface Props {
