@@ -1,7 +1,7 @@
 const routes = {
-  home: {
+  root: {
     path: '/',
-    name: 'home'
+    name: 'root'
   }
 }
 

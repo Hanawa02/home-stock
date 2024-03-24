@@ -93,7 +93,7 @@ const router = useRouter()
 const toast = useToast()
 function logout() {
   auth.signOut().then(() => {
-    router.push({ name: routes.home.name })
+    router.push({ name: routes.root.name })
     toast.addToast(translation.value.logoutSuccess(), { color: 'green' })
   })
 }
