@@ -13,7 +13,7 @@ const user = useCurrentUser()
   <Toasts />
   <div v-if="user !== null" class="w-full">
     <LoggedInHeader />
-    <div class="w-full overflow-x-auto">
+    <div class="w-full overflow-x-auto mt-16">
       <RouterView />
     </div>
   </div>
