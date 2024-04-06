@@ -12,7 +12,7 @@ const user = useCurrentUser()
 <template>
   <Toasts />
   <div v-if="user !== null" class="w-full">
-    <LoggedInHeader />
+    <LoggedInHeader class="fixed z-50 top-0 left-0 right-0" />
     <div class="w-full overflow-x-auto mt-16">
       <RouterView />
     </div>
