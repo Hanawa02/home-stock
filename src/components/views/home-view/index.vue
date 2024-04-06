@@ -4,7 +4,7 @@ import { useHomeStore } from '@/stores/homes'
 import { useRouter } from 'vue-router'
 
 import GoBackButton from '@/components/atoms/buttons/go-back-button/index.vue'
-
+import BottomMenu from '@/components/molecules/menus/bottom-menu/index.vue'
 const router = useRouter()
 const homeId = computed(() => router.currentRoute.value.params.id)
 
@@ -18,5 +18,7 @@ const home = computed(() => homeStore.homeById(homeId.value.toString()))
       <GoBackButton class="absolute left-2" />
       {{ home.name }}
     </h1>
+    <RouterView />
+    <BottomMenu />
   </main>
 </template>
