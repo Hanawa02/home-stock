@@ -1,15 +1,14 @@
 <template>
   <button
     @click="goBack"
-    class="p-2 rounded-full text-blue-600 hover:bg-blue-50 hover:text-blue-800 hover:shadow-card"
+    class="flex shrink-0 p-2 rounded-full text-blue-600 hover:bg-blue-50 hover:text-blue-800 hover:shadow-card"
   >
-    <ArrowBackIcon class="w-6 h-6" />
+    <span class="material-symbols-outlined w-6 h-6"> arrow_back </span>
   </button>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import ArrowBackIcon from '@/components/atoms/icons/ArrowBackIcon.vue'
 
 const router = useRouter()
 
