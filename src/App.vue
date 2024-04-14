@@ -11,11 +11,17 @@ const user = useCurrentUser()
 
 <template>
   <Toasts />
-  <div v-if="user !== null" class="w-full">
-    <LoggedInHeader class="fixed z-50 top-0 left-0 right-0" />
-    <div class="w-full overflow-x-auto mt-16">
+  <div v-if="user !== null" class="w-full bg-blue-100 h-svh grid app-grid-rows">
+    <LoggedInHeader class="z-50" />
+    <div class="w-full overflow-x-auto h-full">
       <RouterView />
     </div>
   </div>
   <AuthView v-else />
 </template>
+
+<style scoped>
+.app-grid-rows {
+  grid-template-rows: auto 1fr;
+}
+</style>

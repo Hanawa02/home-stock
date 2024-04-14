@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-  @apply text-3xl text-center font-bold py-4 lg:text-5xl text-gray-700 capitalize;
+@layer base {
+  h1 {
+    @apply text-3xl text-center font-bold py-4 lg:text-5xl text-gray-700 capitalize;
+  }
+
+  .contained-grid {
+    @apply grid h-full overflow-x-auto;
+  }
 }

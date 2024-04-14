@@ -4,9 +4,17 @@ const routes = {
     name: 'root'
   },
   homes: {
-    item: {
+    settings: {
       path: '/homes/:id',
-      name: 'home'
+      name: 'home-settings'
+    },
+    shoppingList: {
+      path: '/homes/:id/shopping-list',
+      name: 'homes-shoppingList'
+    },
+    stock: {
+      path: '/homes/:id/stock',
+      name: 'homes-stock'
     }
   }
 }
