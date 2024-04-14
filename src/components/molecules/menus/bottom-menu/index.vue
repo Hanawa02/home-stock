@@ -12,7 +12,7 @@
               {{ menu.icon }}
             </span>
             <label
-              class="text-zinc-600 md:group-hover:text-amber-800 md:group-hover:underline font-normal cursor-pointer"
+              class="text-zinc-600 md:group-hover:text-amber-800 md:group-hover:underline font-normal cursor-pointer text-sm"
               >{{ menu.label }}</label
             >
           </button>
