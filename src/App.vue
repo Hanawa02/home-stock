@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AuthView from '@/views/auth/AuthView.vue'
+import AuthView from '@/components/views/auth-view/index.vue'
 import Toasts from '@/components/atoms/toasts/index.vue'
 import LoggedInHeader from '@/components/molecules/headers/logged-in-header/index.vue'
 
