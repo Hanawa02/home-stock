@@ -8,9 +8,10 @@ import translations from './translations'
 const homeStore = useHomeStore()
 const homes = computed(() => homeStore.homes.value)
 
-const homeRouteName = routes.homes.item.name
+const homeRouteName = routes.homes.shoppingList.name
 
 const localization = useLocalization()
+
 const translation = computed(() => translations[localization.locale.value])
 </script>
 
