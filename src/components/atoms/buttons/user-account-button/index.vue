@@ -10,7 +10,7 @@
         class="absolute min-w-32 top-2 right-0 z-50 bg-white border shadow-lg rounded-md p-2"
       >
         <button @click="logout">
-          {{ user_account_button__logout }}
+          {{ user_account_button__logout() }}
         </button>
       </div>
     </div>

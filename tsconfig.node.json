@@ -12,12 +12,6 @@
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
 
-    "paths": {
-      "~/*": ["./src/*"],
-      "~icons/*": ["./node_modules/vue-material-design-icons/*"],
-      "~translations": ["./src/i18n/generated/runtime.js"]
-    },
-
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "types": ["node"]
