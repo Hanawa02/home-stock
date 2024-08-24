@@ -11,3 +11,8 @@
     @apply grid h-full overflow-x-auto;
   }
 }
+
+.material-design-icon > .material-design-icon__svg {
+  height: inherit;
+  width: inherit;
+}
