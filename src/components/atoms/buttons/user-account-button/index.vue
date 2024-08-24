@@ -20,17 +20,17 @@
 <script setup lang="ts">
 import { computed, ref } from "vue"
 import { useCurrentUser } from "vuefire"
-import { auth } from "@/firebase"
+import { auth } from "~/firebase"
 
 import { useRouter } from "vue-router"
-import routes from "@/router/routes"
-import { useToast } from "@/composables/toast"
+import routes from "~/router/routes"
+import { useToast } from "~/composables/toast"
 import {
   user_account_button__logout,
   user_account_button__logout_success_toast
 } from "~translations"
 
-import UserBadge from "@/components/atoms/user-badge/index.vue"
+import UserBadge from "~/components/atoms/user-badge/index.vue"
 
 const user = useCurrentUser()
 

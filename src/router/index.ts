@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router"
-import RootView from "@/components/views/RootView.vue"
-import HomeView from "@/components/views/home-view/index.vue"
-import HomeShoppingListView from "@/components/views/home-view/shopping-list-view/index.vue"
 import HomeSettingsView from "@/components/views/home-view/settings-view/index.vue"
+import RootView from "~/components/views/RootView.vue"
+import HomeView from "~/components/views/home-view/index.vue"
+import HomeShoppingListView from "~/components/views/home-view/shopping-list-view/index.vue"
 
 import routes from "./routes"
 

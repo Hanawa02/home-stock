@@ -1,4 +1,4 @@
-import { firebaseApp } from "@/firebase"
+import { firebaseApp } from "~/firebase"
 import {
   getFirestore,
   doc,

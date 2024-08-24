@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [vue(), VueDevTools()],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "~": fileURLToPath(new URL("./src", import.meta.url)),
       "~icons": fileURLToPath(new URL("./node_modules/vue-material-design-icons", import.meta.url)),
       "~translations": fileURLToPath(new URL("./src/i18n/generated/runtime.js", import.meta.url))
     }

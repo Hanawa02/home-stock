@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import UserAccountButton from "@/components/atoms/buttons/user-account-button/index.vue"
+import UserAccountButton from "~/components/atoms/buttons/user-account-button/index.vue"
 
 import { useRouter } from "vue-router"
-import routes from "@/router/routes"
+import routes from "~/router/routes"
 import { common__app_name } from "~translations"
 
 const router = useRouter()

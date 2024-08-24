@@ -13,12 +13,12 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue"
-import { useHomeStore } from "@/stores/homes"
+import { useHomeStore } from "~/stores/homes"
 import { useRouter } from "vue-router"
 
-import GoBackButton from "@/components/atoms/buttons/go-back-button/index.vue"
-import BottomMenu from "@/components/molecules/menus/bottom-menu/index.vue"
-import routes from "@/router/routes"
+import GoBackButton from "~/components/atoms/buttons/go-back-button/index.vue"
+import BottomMenu from "~/components/molecules/menus/bottom-menu/index.vue"
+import routes from "~/router/routes"
 
 import {
   bottom_menu__settings,

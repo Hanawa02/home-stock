@@ -36,9 +36,9 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from "@/composables/toast"
+import { useToast } from "~/composables/toast"
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth"
-import { auth } from "@/firebase"
+import { auth } from "~/firebase"
 import {
   google_button__success_auth_toast,
   google_button__sign_in_with_google

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
-import { useHomeStore } from "@/stores/homes"
-import routes from "@/router/routes"
+import { useHomeStore } from "~/stores/homes"
+import routes from "~/router/routes"
 import { root_view__title } from "~translations"
 
 const homeStore = useHomeStore()
