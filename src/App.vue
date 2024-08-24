@@ -11,7 +11,7 @@ const user = useCurrentUser()
 
 <template>
   <Toasts />
-  <div v-if="user !== null" class="w-full bg-blue-100 h-svh grid app-grid-rows">
+  <div v-if="user !== null" class="w-full h-svh grid app-grid-rows">
     <LoggedInHeader class="z-50" />
     <div class="w-full overflow-x-auto h-full">
       <RouterView />

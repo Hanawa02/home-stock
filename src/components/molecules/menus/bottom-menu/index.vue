@@ -8,11 +8,11 @@
             class="flex flex-col items-center group mx-auto"
             :aria-label="menu.label"
           >
-            <span class="text-amber-800 md:group-hover:text-amber-700 material-symbols-outlined">
+            <span class="text-blue-800 md:group-hover:text-blue-700 material-symbols-outlined">
               {{ menu.icon }}
             </span>
             <label
-              class="text-zinc-600 md:group-hover:text-amber-800 md:group-hover:underline font-normal cursor-pointer text-sm"
+              class="text-zinc-600 md:group-hover:text-blue-800 md:group-hover:underline font-normal cursor-pointer text-sm"
               >{{ menu.label }}</label
             >
           </button>
