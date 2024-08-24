@@ -50,10 +50,10 @@
 import { computed, ref } from "vue"
 import { useLocalization } from "@/composables/localization"
 import translations from "./translations"
-import PlusIcon from "icons/Plus.vue"
-import DeleteIcon from "icons/Delete.vue"
-import CheckBoxBlankCircleOutlineIcon from "icons/CheckBoxBlankCircleOutline.vue"
-import CheckCircleIcon from "icons/CheckCircle.vue"
+import PlusIcon from "~icons/Plus.vue"
+import DeleteIcon from "~icons/Delete.vue"
+import CheckBoxBlankCircleOutlineIcon from "~icons/CheckBoxBlankCircleOutline.vue"
+import CheckCircleIcon from "~icons/CheckCircle.vue"
 
 const localization = useLocalization()
 const translation = computed(() => translations[localization.locale.value])

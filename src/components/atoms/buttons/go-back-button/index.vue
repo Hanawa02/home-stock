@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router"
-import ArrowLeftIcon from "icons/ArrowLeft.vue"
+import ArrowLeftIcon from "~icons/ArrowLeft.vue"
 const router = useRouter()
 
 function goBack(): void {
