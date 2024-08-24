@@ -20,8 +20,11 @@ import GoBackButton from "@/components/atoms/buttons/go-back-button/index.vue"
 import BottomMenu from "@/components/molecules/menus/bottom-menu/index.vue"
 import routes from "@/router/routes"
 
-import { useLocalization } from "@/composables/localization"
-import translations from "./translations"
+import {
+  bottom_menu__settings,
+  bottom_menu__shopping_list,
+  bottom_menu__stock
+} from "~translations"
 
 const router = useRouter()
 const homeId = computed(() => router.currentRoute.value.params.id)
@@ -29,24 +32,21 @@ const homeId = computed(() => router.currentRoute.value.params.id)
 const homeStore = useHomeStore()
 const home = computed(() => homeStore.homeById(homeId.value.toString()))
 
-const localization = useLocalization()
-const translation = computed(() => translations[localization.locale.value])
-
 const menuItems = computed(() => [
   {
-    label: translation.value.shoppingList(),
+    label: bottom_menu__shopping_list(),
     icon: "shopping_cart",
     clickFunction: () =>
       router.push({ name: routes.homes.shoppingList.name, params: { id: homeId.value } })
   },
   {
-    label: translation.value.stock(),
+    label: bottom_menu__stock(),
     icon: "inventory",
     clickFunction: () =>
       router.push({ name: routes.homes.stock.name, params: { id: homeId.value } })
   },
   {
-    label: translation.value.home(),
+    label: bottom_menu__settings(),
     icon: "settings",
     clickFunction: () =>
       router.push({ name: routes.homes.settings.name, params: { id: homeId.value } })

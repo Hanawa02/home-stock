@@ -2,7 +2,7 @@
   <div class="w-full p-4 border-b shadow bg-white">
     <div class="flex w-full lg:max-w-7xl lg:mx-auto">
       <button class="leading-4 w-min text-indigo-600 font-bold text-lg" @click="goToRootPage()">
-        Home Stock
+        {{ common__app_name() }}
       </button>
       <UserAccountButton class="ml-auto" />
     </div>
@@ -14,6 +14,7 @@ import UserAccountButton from "@/components/atoms/buttons/user-account-button/in
 
 import { useRouter } from "vue-router"
 import routes from "@/router/routes"
+import { common__app_name } from "~translations"
 
 const router = useRouter()
 function goToRootPage() {

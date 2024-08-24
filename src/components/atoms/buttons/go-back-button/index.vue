@@ -15,7 +15,7 @@
 import { useRouter } from "vue-router"
 import ArrowLeftIcon from "~icons/ArrowLeft.vue"
 
-import { go_back_button__arial_label } from "~/i18n"
+import { go_back_button__arial_label } from "~translations"
 
 const router = useRouter()
 

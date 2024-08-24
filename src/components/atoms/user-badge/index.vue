@@ -3,7 +3,7 @@
     v-if="user?.photoURL"
     :class="[sizeClasses, 'rounded-full']"
     :src="user?.photoURL"
-    alt="Profile picture"
+    :alt="user_badge__profile_image_alt_text()"
   />
   <div
     v-else
@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue"
+import { user_badge__profile_image_alt_text } from "~translations"
 
 type User = {
   photoURL: string | null

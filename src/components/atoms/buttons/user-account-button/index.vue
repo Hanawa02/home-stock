@@ -10,7 +10,7 @@
         class="absolute min-w-32 top-2 right-0 z-50 bg-white border shadow-lg rounded-md p-2"
       >
         <button @click="logout">
-          {{ translation.logout() }}
+          {{ user_account_button__logout }}
         </button>
       </div>
     </div>
@@ -22,18 +22,15 @@ import { computed, ref } from "vue"
 import { useCurrentUser } from "vuefire"
 import { auth } from "@/firebase"
 
-import { useLocalization } from "@/composables/localization"
-import translations from "./translations"
 import { useRouter } from "vue-router"
 import routes from "@/router/routes"
 import { useToast } from "@/composables/toast"
+import {
+  user_account_button__logout,
+  user_account_button__logout_success_toast
+} from "~translations"
 
 import UserBadge from "@/components/atoms/user-badge/index.vue"
-
-const localization = useLocalization()
-const translation = computed(() => {
-  return translations[localization.locale.value]
-})
 
 const user = useCurrentUser()
 
@@ -73,7 +70,7 @@ const toast = useToast()
 function logout() {
   auth.signOut().then(() => {
     router.push({ name: routes.root.name })
-    toast.addToast(translation.value.logoutSuccess(), { color: "green" })
+    toast.addToast(user_account_button__logout_success_toast(), { color: "green" })
   })
 }
 </script>

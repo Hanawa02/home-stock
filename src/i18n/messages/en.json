@@ -1,5 +1,26 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
 
-  "go_back_button__arial_label": "Go back"
+  "common__app_name": "Home Stock",
+
+  "go_back_button__arial_label": "Go back",
+
+  "google_button__success_auth_toast": "You have successfully authenticated with Google!",
+  "google_button__sign_in_with_google": "Sign in with Google",
+
+  "user_account_button__logout": "Log out",
+  "user_account_button__logout_success_toast": "You have been logged out!",
+
+  "user_badge__profile_image_alt_text": "User profile picture",
+
+  "auth_view__sign_in": "Sign in to manage your Home Stocks",
+
+  "bottom_menu__shopping_list": "Shopping List",
+  "bottom_menu__stock": "Stock",
+  "bottom_menu__settings": "Settings",
+
+  "shopping_list_view__item_input_placeholder": "Strawberries",
+  "shopping_list_view__item_input_label": "Add new item",
+
+  "root_view__title": "Homes"
 }

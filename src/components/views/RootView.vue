@@ -2,23 +2,18 @@
 import { computed } from "vue"
 import { useHomeStore } from "@/stores/homes"
 import routes from "@/router/routes"
-import { useLocalization } from "@/composables/localization"
-import translations from "./translations"
+import { root_view__title } from "~translations"
 
 const homeStore = useHomeStore()
 const homes = computed(() => homeStore.homes.value)
 
 const homeRouteName = routes.homes.shoppingList.name
-
-const localization = useLocalization()
-
-const translation = computed(() => translations[localization.locale.value])
 </script>
 
 <template>
   <main>
     <h1>
-      {{ translation.rootView.homes() }}
+      {{ root_view__title() }}
     </h1>
     <ul class="p-4 grid md:grid-cols-2 lg:grid-cols-4">
       <li v-for="home in homes" :key="home.id">

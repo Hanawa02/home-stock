@@ -31,8 +31,8 @@
       <input
         type="text"
         class="w-full border p-3 rounded shadow-md outline-indigo-200 outline-offset-2"
-        :label="translation.input.label()"
-        :placeholder="translation.input.placeholder()"
+        :label="shopping_list_view__item_input_label()"
+        :placeholder="shopping_list_view__item_input_placeholder()"
         v-model="shoppingItem"
         @keyup.enter="addItemToList"
       />
@@ -48,15 +48,16 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue"
-import { useLocalization } from "@/composables/localization"
-import translations from "./translations"
+
 import PlusIcon from "~icons/Plus.vue"
 import DeleteIcon from "~icons/Delete.vue"
 import CheckBoxBlankCircleOutlineIcon from "~icons/CheckBoxBlankCircleOutline.vue"
 import CheckCircleIcon from "~icons/CheckCircle.vue"
 
-const localization = useLocalization()
-const translation = computed(() => translations[localization.locale.value])
+import {
+  shopping_list_view__item_input_label,
+  shopping_list_view__item_input_placeholder
+} from "~translations"
 
 type ShoppingItem = {
   id: string
