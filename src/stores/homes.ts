@@ -1,17 +1,22 @@
 import { defineStore } from "pinia"
-import { useCollection } from "vuefire"
-import { homes } from "~/firebase/database"
-import { computed } from "vue"
-import { useCurrentUser } from "vuefire"
+
+import { useStorage } from "@vueuse/core"
+import type { StockItem } from "~/common-types/stock-item"
+
+export type Home = {
+  id: string
+  name: string
+  stock: StockItem[]
+}
+
+const HOME_STORAGE_KEY = "hs.homes"
 
 export const useHomeStore = defineStore("homes", () => {
-  const user = useCurrentUser()
-
-  const userHomes = computed(() => useCollection(homes(user.value?.uid || "")))
+  const homes = useStorage<Home[]>(HOME_STORAGE_KEY, [{ id: "1", name: "Home 1", stock: [] }])
 
   function homeById(id: string) {
-    return userHomes.value.value?.find((home) => home.id === id)
+    return homes.value?.find((home) => home.id === id)
   }
 
-  return { homes: userHomes, homeById }
+  return { homes, homeById }
 })

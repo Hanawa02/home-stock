@@ -4,7 +4,7 @@
 
 @layer base {
   h1 {
-    @apply text-3xl text-center font-bold py-4 lg:text-5xl text-gray-700 capitalize;
+    @apply text-3xl text-center font-bold lg:text-5xl text-gray-700 capitalize;
   }
 
   .contained-grid {

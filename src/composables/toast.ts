@@ -1,7 +1,7 @@
 import { ref } from "vue"
+import { type Color } from "~/common-types/color"
 
-export type Color = "blue" | "green" | "yellow" | "red"
-export interface Toast {
+export type Toast = {
   id: string
   text: string
   color: Color
