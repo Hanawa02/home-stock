@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 
-import BottomMenu from "./index.vue"
+import BottomMenu from "./BottomMenu.vue"
 
 const meta = {
-  title: "Components/Menus/BottomMenu",
+  title: "Components/BottomMenu",
   component: BottomMenu,
 
   argTypes: {

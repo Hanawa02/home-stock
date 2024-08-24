@@ -30,7 +30,7 @@ import {
   user_account_button__logout_success_toast
 } from "~translations"
 
-import UserBadge from "~/components/atoms/user-badge/index.vue"
+import UserBadge from "~/components/atoms/UserBadge.vue"
 
 const user = useCurrentUser()
 
@@ -69,7 +69,7 @@ const router = useRouter()
 const toast = useToast()
 function logout() {
   auth.signOut().then(() => {
-    router.push({ name: routes.root.name })
+    router.push({ name: routes.homeList.name })
     toast.addToast(user_account_button__logout_success_toast(), { color: "green" })
   })
 }

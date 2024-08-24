@@ -2,18 +2,18 @@
 import { computed } from "vue"
 import { useHomeStore } from "~/stores/homes"
 import routes from "~/router/routes"
-import { root_view__title } from "~translations"
+import { home_list_view__title } from "~translations"
 
 const homeStore = useHomeStore()
 const homes = computed(() => homeStore.homes.value)
 
-const homeRouteName = routes.homes.shoppingList.name
+const homeRouteName = routes.home.shoppingList.name
 </script>
 
 <template>
   <main>
     <h1>
-      {{ root_view__title() }}
+      {{ home_list_view__title() }}
     </h1>
     <ul class="p-4 grid md:grid-cols-2 lg:grid-cols-4">
       <li v-for="home in homes" :key="home.id">

@@ -1,20 +1,20 @@
 const routes = {
-  root: {
+  homeList: {
     path: "/",
-    name: "root"
+    name: "home-list"
   },
-  homes: {
+  home: {
     settings: {
       path: "/homes/:id",
       name: "home-settings"
     },
     shoppingList: {
       path: "/homes/:id/shopping-list",
-      name: "homes-shoppingList"
+      name: "home-shoppingList"
     },
     stock: {
       path: "/homes/:id/stock",
-      name: "homes-stock"
+      name: "home-stock"
     }
   }
 }

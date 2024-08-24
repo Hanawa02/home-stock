@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 
-import GoogleButton from "./index.vue"
+import GoBackButton from "./GoBackButton.vue"
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: "Components/Buttons/GoogleButton",
-  component: GoogleButton,
+  title: "Components/Buttons/GoBackButton",
+  component: GoBackButton,
 
   argTypes: {}
-} satisfies Meta<typeof GoogleButton>
+} satisfies Meta<typeof GoBackButton>
 
 export default meta
 type Story = StoryObj<typeof meta>

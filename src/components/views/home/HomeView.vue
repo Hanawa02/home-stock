@@ -16,8 +16,8 @@ import { computed, ref } from "vue"
 import { useHomeStore } from "~/stores/homes"
 import { useRouter } from "vue-router"
 
-import GoBackButton from "~/components/atoms/buttons/go-back-button/index.vue"
-import BottomMenu from "~/components/molecules/menus/bottom-menu/index.vue"
+import GoBackButton from "~/components/atoms/buttons/GoBackButton.vue"
+import BottomMenu from "~/components/molecules/BottomMenu.vue"
 import routes from "~/router/routes"
 
 import {
@@ -37,19 +37,18 @@ const menuItems = computed(() => [
     label: bottom_menu__shopping_list(),
     icon: "shopping_cart",
     clickFunction: () =>
-      router.push({ name: routes.homes.shoppingList.name, params: { id: homeId.value } })
+      router.push({ name: routes.home.shoppingList.name, params: { id: homeId.value } })
   },
   {
     label: bottom_menu__stock(),
     icon: "inventory",
-    clickFunction: () =>
-      router.push({ name: routes.homes.stock.name, params: { id: homeId.value } })
+    clickFunction: () => router.push({ name: routes.home.stock.name, params: { id: homeId.value } })
   },
   {
     label: bottom_menu__settings(),
     icon: "settings",
     clickFunction: () =>
-      router.push({ name: routes.homes.settings.name, params: { id: homeId.value } })
+      router.push({ name: routes.home.settings.name, params: { id: homeId.value } })
   }
 ])
 </script>

@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { ref } from "vue"
 
 import PlusIcon from "~icons/Plus.vue"
 import DeleteIcon from "~icons/Delete.vue"

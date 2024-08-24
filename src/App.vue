@@ -1,24 +1,20 @@
-<script setup lang="ts">
-import { RouterView } from "vue-router"
-import AuthView from "~/components/views/auth-view/index.vue"
-import Toasts from "~/components/atoms/toasts/index.vue"
-import LoggedInHeader from "~/components/molecules/headers/logged-in-header/index.vue"
-
-import { useCurrentUser } from "vuefire"
-
-const user = useCurrentUser()
-</script>
-
 <template>
   <Toasts />
-  <div v-if="user !== null" class="w-full h-svh grid app-grid-rows">
-    <LoggedInHeader class="z-50" />
-    <div class="w-full overflow-x-auto h-full">
-      <RouterView />
-    </div>
-  </div>
-  <AuthView v-else />
+  <DefaultLayout>
+    <RouterView />
+  </DefaultLayout>
 </template>
+
+<script setup lang="ts">
+import { RouterView } from "vue-router"
+
+import { setLanguageTag } from "~i18n"
+
+import Toasts from "~/components/atoms/Toasts.vue"
+import DefaultLayout from "~/components/layouts/Default.vue"
+
+setLanguageTag("en")
+</script>
 
 <style scoped>
 .app-grid-rows {

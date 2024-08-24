@@ -14,5 +14,5 @@
 <script setup lang="ts">
 import { auth_view__sign_in } from "~translations"
 
-import GoogleButton from "~/components/atoms/buttons/google-button/index.vue"
+import GoogleButton from "~/components/atoms/buttons/GoogleButton.vue"
 </script>

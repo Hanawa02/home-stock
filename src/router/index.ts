@@ -1,23 +1,21 @@
 import { createRouter, createWebHistory } from "vue-router"
-import HomeSettingsView from "@/components/views/home-view/settings-view/index.vue"
-import RootView from "~/components/views/RootView.vue"
-import HomeView from "~/components/views/home-view/index.vue"
-import HomeShoppingListView from "~/components/views/home-view/shopping-list-view/index.vue"
+import HomeListView from "~/components/views/HomeListView.vue"
+import HomeView from "~/components/views/home/HomeView.vue"
+import HomeShoppingListView from "~/components/views/home/ShoppingListView.vue"
 
 import routes from "./routes"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: routes.root.path, name: routes.root.name, component: RootView },
+    { path: routes.homeList.path, name: routes.homeList.name, component: HomeListView },
     {
-      path: routes.homes.settings.path,
+      path: routes.home.settings.path,
       name: "homes",
       component: HomeView,
       children: [
-        { path: "", name: routes.homes.settings.name, component: HomeSettingsView },
-        { ...routes.homes.shoppingList, component: HomeShoppingListView },
-        { ...routes.homes.stock, component: HomeShoppingListView }
+        { ...routes.home.shoppingList, component: HomeShoppingListView },
+        { ...routes.home.stock, component: HomeShoppingListView }
       ]
     }
   ]
