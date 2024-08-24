@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "paraglide-js compile --project ./project.inlang --outdir ./src\\i18n && run-p type-check \"build-only {@}\" --",
+    "build": "paraglide-js compile --project ./project.inlang --outdir ./src\\i18n\\generated && run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
@@ -15,7 +15,7 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src\\i18n"
+    "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src\\i18n\\generated"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.1",
