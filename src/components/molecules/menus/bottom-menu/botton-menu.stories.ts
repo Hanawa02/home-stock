@@ -1,15 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from "@storybook/vue3"
 
-import BottomMenu from './index.vue'
+import BottomMenu from "./index.vue"
 
 const meta = {
-  title: 'Components/Menus/BottomMenu',
+  title: "Components/Menus/BottomMenu",
   component: BottomMenu,
 
   argTypes: {
     menuItems: {
       control: {
-        type: 'object'
+        type: "object"
       }
     }
   }
@@ -22,17 +22,17 @@ export const Menu: Story = {
   args: {
     menuItems: [
       {
-        label: 'Home',
-        icon: 'home',
+        label: "Home",
+        icon: "home",
         clickFunction: () => {
-          console.log('Home clicked')
+          console.log("Home clicked")
         }
       },
       {
-        label: 'Shopping List',
-        icon: 'list',
+        label: "Shopping List",
+        icon: "list",
         clickFunction: () => {
-          console.log('Shopping List clicked')
+          console.log("Shopping List clicked")
         }
       }
     ]

@@ -18,17 +18,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useCurrentUser } from 'vuefire'
-import { auth } from '@/firebase'
+import { computed, ref } from "vue"
+import { useCurrentUser } from "vuefire"
+import { auth } from "@/firebase"
 
-import { useLocalization } from '@/composables/localization'
-import translations from './translations'
-import { useRouter } from 'vue-router'
-import routes from '@/router/routes'
-import { useToast } from '@/composables/toast'
+import { useLocalization } from "@/composables/localization"
+import translations from "./translations"
+import { useRouter } from "vue-router"
+import routes from "@/router/routes"
+import { useToast } from "@/composables/toast"
 
-import UserBadge from '@/components/atoms/user-badge/index.vue'
+import UserBadge from "@/components/atoms/user-badge/index.vue"
 
 const localization = useLocalization()
 const translation = computed(() => {
@@ -37,7 +37,7 @@ const translation = computed(() => {
 
 const user = useCurrentUser()
 
-const nameParts = computed(() => user.value?.displayName?.split(' ') || ['You'])
+const nameParts = computed(() => user.value?.displayName?.split(" ") || ["You"])
 
 const NAME_MAX_LENGTH = 20
 const visibleName = computed(() => {
@@ -48,7 +48,7 @@ const visibleName = computed(() => {
       break
     }
 
-    finalName += ' ' + nameParts.value[i]
+    finalName += " " + nameParts.value[i]
   }
 
   return finalName
@@ -64,7 +64,7 @@ function togglePopover() {
   isPopoverOpen.value = !isPopoverOpen.value
 
   if (isPopoverOpen.value) {
-    setTimeout(() => window.addEventListener('click', closePopover, { once: true }), 100)
+    setTimeout(() => window.addEventListener("click", closePopover, { once: true }), 100)
   }
 }
 
@@ -73,7 +73,7 @@ const toast = useToast()
 function logout() {
   auth.signOut().then(() => {
     router.push({ name: routes.root.name })
-    toast.addToast(translation.value.logoutSuccess(), { color: 'green' })
+    toast.addToast(translation.value.logoutSuccess(), { color: "green" })
   })
 }
 </script>

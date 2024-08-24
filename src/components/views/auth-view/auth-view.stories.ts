@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
-import AuthView from './index.vue'
+import type { Meta, StoryObj } from "@storybook/vue3"
+import AuthView from "./index.vue"
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
-  title: 'Views/AuthView',
+  title: "Views/AuthView",
   component: AuthView,
 
   argTypes: {

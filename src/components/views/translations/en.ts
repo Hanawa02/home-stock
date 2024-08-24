@@ -1,5 +1,5 @@
 export default {
   rootView: {
-    homes: () => 'Homes'
+    homes: () => "Homes"
   }
 }

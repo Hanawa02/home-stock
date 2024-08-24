@@ -1,3 +1,3 @@
 export default {
-  signInWithGoogle: () => 'Sign in with Google'
+  signInWithGoogle: () => "Sign in with Google"
 }

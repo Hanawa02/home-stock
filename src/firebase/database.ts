@@ -1,4 +1,4 @@
-import { firebaseApp } from '@/firebase'
+import { firebaseApp } from "@/firebase"
 import {
   getFirestore,
   doc,
@@ -8,7 +8,7 @@ import {
   where,
   query,
   type DocumentData
-} from 'firebase/firestore'
+} from "firebase/firestore"
 
 const db = getFirestore(firebaseApp)
 export interface Home extends DocumentData {
@@ -21,7 +21,7 @@ export function createHome(home: Partial<Home>) {
 }
 
 export function homeById(id: string) {
-  return doc(db, 'homes', id)
+  return doc(db, "homes", id)
 }
 
 export function updateHome(id: string, data: Partial<Home>) {
@@ -29,10 +29,10 @@ export function updateHome(id: string, data: Partial<Home>) {
 }
 
 function homesRef() {
-  return collection(db, 'homes')
+  return collection(db, "homes")
 }
 
 export function homes(userId: string) {
-  const filter = where('userIds', 'array-contains', userId)
+  const filter = where("userIds", "array-contains", userId)
   return query(homesRef(), filter)
 }

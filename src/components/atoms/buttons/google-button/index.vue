@@ -36,26 +36,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useToast } from '@/composables/toast'
-import { useLocalization } from '@/composables/localization'
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { auth } from '@/firebase'
+import { computed } from "vue"
+import { useToast } from "@/composables/toast"
+import { useLocalization } from "@/composables/localization"
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+import { auth } from "@/firebase"
 
-import translations from './translations'
+import translations from "./translations"
 
 const provider = new GoogleAuthProvider()
 
 async function signIn() {
   return signInWithPopup(auth, provider)
     .then(() => {
-      useToast().addToast('You have successfully signed up!', {
-        color: 'green'
+      useToast().addToast("You have successfully signed up!", {
+        color: "green"
       })
     })
     .catch((error) => {
       useToast().addToast(error.message, {
-        color: 'red'
+        color: "red"
       })
     })
 }
@@ -78,7 +78,7 @@ const translation = computed(() => translations[localization.locale.value])
   box-sizing: border-box;
   color: #1f1f1f;
   cursor: pointer;
-  font-family: 'Roboto', arial, sans-serif;
+  font-family: "Roboto", arial, sans-serif;
   font-size: 14px;
   height: 40px;
   letter-spacing: 0.25px;
@@ -126,7 +126,7 @@ const translation = computed(() => translations[localization.locale.value])
 .gsi-material-button .gsi-material-button-contents {
   -webkit-flex-grow: 1;
   flex-grow: 1;
-  font-family: 'Roboto', arial, sans-serif;
+  font-family: "Roboto", arial, sans-serif;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;

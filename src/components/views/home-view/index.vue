@@ -12,16 +12,16 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
-import { useHomeStore } from '@/stores/homes'
-import { useRouter } from 'vue-router'
+import { computed, ref } from "vue"
+import { useHomeStore } from "@/stores/homes"
+import { useRouter } from "vue-router"
 
-import GoBackButton from '@/components/atoms/buttons/go-back-button/index.vue'
-import BottomMenu from '@/components/molecules/menus/bottom-menu/index.vue'
-import routes from '@/router/routes'
+import GoBackButton from "@/components/atoms/buttons/go-back-button/index.vue"
+import BottomMenu from "@/components/molecules/menus/bottom-menu/index.vue"
+import routes from "@/router/routes"
 
-import { useLocalization } from '@/composables/localization'
-import translations from './translations'
+import { useLocalization } from "@/composables/localization"
+import translations from "./translations"
 
 const router = useRouter()
 const homeId = computed(() => router.currentRoute.value.params.id)
@@ -35,19 +35,19 @@ const translation = computed(() => translations[localization.locale.value])
 const menuItems = computed(() => [
   {
     label: translation.value.shoppingList(),
-    icon: 'shopping_cart',
+    icon: "shopping_cart",
     clickFunction: () =>
       router.push({ name: routes.homes.shoppingList.name, params: { id: homeId.value } })
   },
   {
     label: translation.value.stock(),
-    icon: 'inventory',
+    icon: "inventory",
     clickFunction: () =>
       router.push({ name: routes.homes.stock.name, params: { id: homeId.value } })
   },
   {
     label: translation.value.home(),
-    icon: 'settings',
+    icon: "settings",
     clickFunction: () =>
       router.push({ name: routes.homes.settings.name, params: { id: homeId.value } })
   }

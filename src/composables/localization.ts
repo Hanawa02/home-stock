@@ -1,9 +1,9 @@
-import { useStorage } from '@vueuse/core'
+import { useStorage } from "@vueuse/core"
 
-const DEFAULT_LOCALE = 'en'
+const DEFAULT_LOCALE = "en"
 
 const LANGUAGES = {
-  en: 'English'
+  en: "English"
 }
 
 type Language = keyof typeof LANGUAGES
@@ -13,14 +13,14 @@ export type Translation<T> = {
 }
 
 const locale = useStorage<Language>(
-  'locale',
+  "locale",
   getValidLanguage(navigator.language || DEFAULT_LOCALE)
 )
 
 function getValidLanguage(language: string): Language {
   let locale = language
-  if (locale.includes('-')) {
-    locale = locale.split('-')[0]
+  if (locale.includes("-")) {
+    locale = locale.split("-")[0]
   }
 
   if (Object.keys(LANGUAGES).includes(locale)) {

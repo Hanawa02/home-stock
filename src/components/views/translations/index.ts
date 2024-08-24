@@ -1,6 +1,6 @@
-import { type Translation } from '@/composables/localization'
+import { type Translation } from "@/composables/localization"
 
-import en from './en'
+import en from "./en"
 
 type ComponentTranslation = typeof en
 
