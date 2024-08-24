@@ -15,7 +15,7 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "postinstall": "paraglide-js compile --project ./project.inlang --outdir ./src\\i18n\\generated"
+    "paraglide": "paraglide-js compile --watch --project ./project.inlang --outdir ./src\\i18n\\generated"
   },
   "dependencies": {
     "@vueuse/core": "^10.11.1",
