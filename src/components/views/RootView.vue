@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useHomeStore } from '@/stores/homes'
-import routes from '@/router/routes'
-import { useLocalization } from '@/composables/localization'
-import translations from './translations'
+import { computed } from "vue"
+import { useHomeStore } from "@/stores/homes"
+import routes from "@/router/routes"
+import { useLocalization } from "@/composables/localization"
+import translations from "./translations"
 
 const homeStore = useHomeStore()
 const homes = computed(() => homeStore.homes.value)
@@ -24,7 +24,7 @@ const translation = computed(() => translations[localization.locale.value])
       <li v-for="home in homes" :key="home.id">
         <router-link :to="{ name: homeRouteName, params: { id: home.id } }">
           <div
-            class="shadow-card p-4 rounded text-center capitalize hover:shadow-card-hover hover:text-blue-600 hover:border-gray-100 cursor-pointer"
+            class="shadow-card p-4 rounded text-center capitalize hover:shadow-card-hover hover:text-indigo-600 hover:border-gray-100 cursor-pointer"
           >
             {{ home.name }}
           </div>

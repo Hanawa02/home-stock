@@ -16,14 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { useToast, type Color, type Toast } from '@/composables/toast'
-import { computed } from 'vue'
+import { useToast, type Color, type Toast } from "@/composables/toast"
+import { computed } from "vue"
 
 const COLORS_STYLES: Record<Color, string> = {
-  red: 'bg-red-100',
-  blue: 'bg-blue-100',
-  yellow: 'bg-yellow-100',
-  green: 'bg-green-100'
+  red: "bg-red-100",
+  blue: "bg-indigo-100",
+  yellow: "bg-yellow-100",
+  green: "bg-green-100"
 }
 
 const { toasts, removeToast } = useToast()

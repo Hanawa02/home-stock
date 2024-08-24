@@ -7,14 +7,17 @@
   />
   <div
     v-else
-    :class="[sizeClasses, 'rounded-full bg-blue-50 flex items-center justify-center text-blue-600']"
+    :class="[
+      sizeClasses,
+      'rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600'
+    ]"
   >
     {{ userInitials }}
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue"
 
 type User = {
   photoURL: string | null
@@ -23,15 +26,15 @@ type User = {
 
 interface Props {
   user?: User
-  size: 'small' | 'medium' | 'large'
+  size: "small" | "medium" | "large"
 }
 
-const props = withDefaults(defineProps<Props>(), { size: 'medium' })
+const props = withDefaults(defineProps<Props>(), { size: "medium" })
 
 const SIZE_CLASSES = {
-  small: 'h-4 w-4',
-  medium: 'h-8 w-8',
-  large: 'h-16 w-16'
+  small: "h-4 w-4",
+  medium: "h-8 w-8",
+  large: "h-16 w-16"
 }
 
 const sizeClasses = computed(() => {
@@ -39,9 +42,9 @@ const sizeClasses = computed(() => {
 })
 
 const userInitials = computed(() => {
-  const nameParts = props.user?.displayName?.split(' ')
+  const nameParts = props.user?.displayName?.split(" ")
   if (!nameParts || nameParts.length === 0) {
-    return 'You'
+    return "You"
   }
 
   if (nameParts && nameParts?.length === 1) {
