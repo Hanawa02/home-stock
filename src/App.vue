@@ -1,8 +1,8 @@
 <template>
   <Toasts />
-  <DefaultLayout>
+  <ViewsLayout>
     <RouterView />
-  </DefaultLayout>
+  </ViewsLayout>
 </template>
 
 <script setup lang="ts">
@@ -11,7 +11,7 @@ import { RouterView } from "vue-router"
 import { setLanguageTag } from "~i18n"
 
 import Toasts from "~/components/atoms/Toasts.vue"
-import DefaultLayout from "~/components/layouts/Default.vue"
+import ViewsLayout from "~/components/views/ViewsLayout.vue"
 
 setLanguageTag("en")
 </script>

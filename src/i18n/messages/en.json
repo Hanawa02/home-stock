@@ -21,8 +21,12 @@
 
   "shopping_list_view__item_input_placeholder": "Strawberries",
   "shopping_list_view__item_input_label": "Add new item",
+  "shopping_list_view__apply_items": "Apply Items",
+  "shopping_list_view__remove_items": "Remove Items",
+  "shopping_list_view__clear_input_button_aria_label": "Clear Shopping Item Input",
+  "shopping_list_view__add_item_button_aria_label": "Add Item to Shopping List",
 
-  "home_list_view__title": "Homes",
+  "home_list_view__title": "Your Homes",
   "home_list_view__no_home": "You have no homes yet. Create one to start using the app!",
   "home_list_view__create_home": "Create Home"
 }

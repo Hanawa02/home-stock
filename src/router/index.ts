@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router"
 import HomeListView from "~/components/views/HomeListView.vue"
-import HomeView from "~/components/views/home/HomeView.vue"
+import HomeViewsLayout from "~/components/views/home/HomeViewsLayout.vue"
 import HomeShoppingListView from "~/components/views/home/ShoppingListView.vue"
+import HomeSettingsView from "~/components/views/home/SettingsView.vue"
 
 import routes from "./routes"
 
@@ -12,10 +13,11 @@ const router = createRouter({
     {
       path: routes.home.settings.path,
       name: "homes",
-      component: HomeView,
+      component: HomeViewsLayout,
       children: [
         { ...routes.home.shoppingList, component: HomeShoppingListView },
-        { ...routes.home.stock, component: HomeShoppingListView }
+        { ...routes.home.stock, component: HomeShoppingListView },
+        { ...routes.home.settings, component: HomeSettingsView }
       ]
     }
   ]

@@ -3,19 +3,20 @@
     <nav>
       <ul class="flex justify-evenly">
         <li v-for="menu in menuItems" :key="menu.label" class="w-full">
-          <button
-            @click="menu.clickFunction"
+          <router-link
+            :to="{ name: menu.routeName, params: menu.routeParams }"
             class="flex flex-col items-center group mx-auto"
-            :aria-label="menu.label"
+            exactActiveClass="cursor-disabled text-indigo-800 font-semibold"
+            inactiveClass="text-zinc-600"
           >
-            <span class="text-indigo-800 md:group-hover:text-indigo-700 material-symbols-outlined">
+            <span class="md:group-hover:text-indigo-500 material-symbols-outlined">
               {{ menu.icon }}
             </span>
             <label
-              class="text-zinc-600 md:group-hover:text-indigo-800 md:group-hover:underline font-normal cursor-pointer text-sm"
+              class="md:group-hover:text-indigo-800 md:group-hover:underline cursor-pointer text-sm"
               >{{ menu.label }}</label
             >
-          </button>
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -23,13 +24,14 @@
 </template>
 
 <script setup lang="ts">
-export interface MenuItem {
+export type MenuItem = {
   label: string
   icon: string
-  clickFunction: () => void
+  routeName: string
+  routeParams: Record<string, unknown>
 }
 
-interface IProps {
+type IProps = {
   menuItems: MenuItem[]
 }
 

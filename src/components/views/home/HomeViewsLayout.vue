@@ -1,6 +1,6 @@
 <template>
   <main v-if="home" class="contained-grid home-view-grid-rows">
-    <h1 class="relative">
+    <h1 class="relative p-4">
       <GoBackButton class="absolute left-2" />
       {{ home.name }}
     </h1>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { computed } from "vue"
 import { useHomeStore } from "~/stores/homes"
 import { useRouter } from "vue-router"
 
@@ -36,19 +36,20 @@ const menuItems = computed(() => [
   {
     label: bottom_menu__shopping_list(),
     icon: "shopping_cart",
-    clickFunction: () =>
-      router.push({ name: routes.home.shoppingList.name, params: { id: homeId.value } })
+    routeName: routes.home.shoppingList.name,
+    routeParams: { id: homeId.value }
   },
   {
     label: bottom_menu__stock(),
     icon: "inventory",
-    clickFunction: () => router.push({ name: routes.home.stock.name, params: { id: homeId.value } })
+    routeName: routes.home.stock.name,
+    routeParams: { id: homeId.value }
   },
   {
     label: bottom_menu__settings(),
     icon: "settings",
-    clickFunction: () =>
-      router.push({ name: routes.home.settings.name, params: { id: homeId.value } })
+    routeName: routes.home.settings.name,
+    routeParams: { id: homeId.value }
   }
 ])
 </script>
