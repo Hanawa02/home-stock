@@ -24,11 +24,13 @@
 </template>
 
 <script setup lang="ts">
+import { type RouteParamsRawGeneric } from "vue-router"
+
 export type MenuItem = {
   label: string
   icon: string
   routeName: string
-  routeParams: Record<string, unknown>
+  routeParams: RouteParamsRawGeneric
 }
 
 type IProps = {

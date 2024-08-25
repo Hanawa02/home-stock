@@ -123,11 +123,13 @@ const addItemToList = () => {
     .stockItems(currentHomeId)
     .find((item) => item.title === shoppingItem.value)
 
-  const item = existingItem ?? {
-    id: generateId(),
-    title: shoppingItem.value,
-    quantity: 1
-  }
+  const item = existingItem
+    ? { id: existingItem.id, title: existingItem.title, quantity: 1 }
+    : {
+        id: generateId(),
+        title: shoppingItem.value,
+        quantity: 1
+      }
 
   homeStore.addToShoppingList(currentHomeId, item)
   clearShoppingItemInput()

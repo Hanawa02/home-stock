@@ -16,7 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { useToast, type Color, type Toast } from "~/composables/toast"
+import { useToast, type Toast } from "~/composables/toast"
+import { type Color } from "~/common-types/color"
 import { computed } from "vue"
 
 const COLORS_STYLES: Record<Color, string> = {
