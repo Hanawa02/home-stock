@@ -4,15 +4,15 @@
       <li
         v-for="item in items"
         :key="item.id"
-        class="border border-indigo-200 rounded w-full mb-4 flex justify-between p-1 bg-indigo-50"
+        class="border border-green-200 rounded w-full mb-4 flex justify-between p-1 bg-green-50"
       >
         <button
-          class="hover:text-indigo-700 px-2 flex gap-2 items-center"
+          class="hover:text-green-700 px-2 flex gap-2 items-center"
           @click="selectItem(item.id)"
           @dblclick="applyItem(item)"
         >
           <CheckCircleIcon v-if="selectedItems.includes(item.id)" class="text-green-600" />
-          <CheckBoxBlankCircleOutlineIcon v-else class="text-indigo-700" />
+          <CheckBoxBlankCircleOutlineIcon v-else class="text-green-700" />
           {{ item.title }}
         </button>
         <button
@@ -23,19 +23,19 @@
         </button>
       </li>
     </ul>
-    <div v-if="selectedItems.length > 0" class="flex gap-4 justify-stretch">
+    <div v-if="selectedItems.length > 0" class="flex flex-col gap-2 md:flex-row md:gap-4">
       <button class="bg-green-200 p-2 w-full rounded-md" @click="applySelectedItems">
-        {{ shopping_list_view__apply_items() }}
+        {{ stock_view__add_to_shopping_list() }}
       </button>
       <button class="bg-red-200 p-2 w-full rounded-md" @click="removeSelectedItems">
-        {{ shopping_list_view__remove_items() }}
+        {{ stock_view__remove_items() }}
       </button>
     </div>
     <div class="flex gap-4 py-4 items-center">
       <div class="relative w-full">
         <input
           type="text"
-          class="w-full border p-3 rounded shadow-md outline-indigo-200 outline-offset-2"
+          class="w-full border p-3 rounded shadow-md outline-green-200 outline-offset-2"
           :label="shopping_list_view__item_input_label()"
           :placeholder="shopping_list_view__item_input_placeholder()"
           v-model.trim="shoppingItem"
@@ -46,7 +46,7 @@
           :class="[
             'absolute right-1 top-1 w-10 h-10 ',
             'p-2 flex justify-center items-center flex-shrink-0 rounded-full',
-            'bg-transparent text-indigo-700 hover:text-white hover:bg-indigo-700 hover:shadow-card'
+            'bg-transparent text-green-700 hover:text-white hover:bg-green-700 hover:shadow-card'
           ]"
           :aria-label="shopping_list_view__clear_input_button_aria_label()"
           @click="clearShoppingItemInput"
@@ -57,7 +57,7 @@
       <button
         :disabled="!shoppingItem"
         :area-label="shopping_list_view__add_item_button_aria_label()"
-        class="disabled:bg-slate-300 p-2 flex justify-center items-center bg-indigo-700 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 text-white rounded-full hover:bg-indigo-500 shadow-card"
+        class="disabled:bg-slate-300 p-2 flex justify-center items-center bg-green-700 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 text-white rounded-full hover:bg-green-500 shadow-card"
         @click="addItemToList"
       >
         <PlusIcon class="w-6 h-6 md:w-8 md:h-8" />
@@ -83,8 +83,8 @@ import { generateId } from "~/utils/id-generator"
 import {
   shopping_list_view__item_input_label,
   shopping_list_view__item_input_placeholder,
-  shopping_list_view__apply_items,
-  shopping_list_view__remove_items,
+  stock_view__remove_items,
+  stock_view__add_to_shopping_list,
   shopping_list_view__clear_input_button_aria_label,
   shopping_list_view__add_item_button_aria_label
 } from "~translations"
@@ -116,7 +116,7 @@ const clearShoppingItemInput = () => {
   shoppingItem.value = ""
 }
 
-const items = computed(() => homeStore.shoppingList(currentHomeId))
+const items = computed(() => homeStore.stockItems(currentHomeId))
 
 const addItemToList = () => {
   const existingItem = homeStore

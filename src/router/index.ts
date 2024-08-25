@@ -3,6 +3,7 @@ import HomeListView from "~/components/views/HomeListView.vue"
 import HomeViewsLayout from "~/components/views/home/HomeViewsLayout.vue"
 import HomeShoppingListView from "~/components/views/home/ShoppingListView.vue"
 import HomeSettingsView from "~/components/views/home/SettingsView.vue"
+import HomeStockView from "~/components/views/home/StockView.vue"
 
 import routes from "./routes"
 
@@ -16,7 +17,7 @@ const router = createRouter({
       component: HomeViewsLayout,
       children: [
         { ...routes.home.shoppingList, component: HomeShoppingListView },
-        { ...routes.home.stock, component: HomeShoppingListView },
+        { ...routes.home.stock, component: HomeStockView },
         { ...routes.home.settings, component: HomeSettingsView }
       ]
     }
