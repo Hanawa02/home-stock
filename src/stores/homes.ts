@@ -1,7 +1,6 @@
 import { defineStore } from "pinia"
 
 import { useStorage } from "@vueuse/core"
-import type { StockItem } from "~/common-types/stock-item"
 
 export type Item = {
   id: string
