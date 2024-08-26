@@ -24,16 +24,14 @@ export const Menu: Story = {
       {
         label: "Home",
         icon: "home",
-        clickFunction: () => {
-          console.log("Home clicked")
-        }
+        routeName: "fake-home-route",
+        routeParams: { id: "1" }
       },
       {
         label: "Shopping List",
         icon: "list",
-        clickFunction: () => {
-          console.log("Shopping List clicked")
-        }
+        routeName: "fake-shopping-list-route",
+        routeParams: { id: "1" }
       }
     ]
   }
