@@ -1,7 +1,7 @@
 <template>
   <div
     v-show="hasToasts"
-    class="fixed bottom-0 right-0 p-4 flex flex-col gap-4 w-full max-w-md z-50"
+    class="fixed top-0 right-0 p-4 flex flex-col gap-4 w-full max-w-md z-[9999]"
   >
     <TransitionGroup name="toast">
       <button

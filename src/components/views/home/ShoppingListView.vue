@@ -7,9 +7,9 @@
         class="border border-indigo-200 rounded w-full mb-4 flex justify-between p-1 bg-indigo-50"
       >
         <button
-          class="hover:text-indigo-700 px-2 flex gap-2 items-center"
+          class="hover:text-indigo-700 px-2 flex gap-2 items-center w-full"
           @click="selectItem(item.id)"
-          @dblclick="applyItem(item)"
+          @dblclick="moveItemToStock(item)"
         >
           <CheckCircleIcon v-if="selectedItems.includes(item.id)" class="text-green-600" />
           <CheckBoxBlankCircleOutlineIcon v-else class="text-indigo-700" />
@@ -24,8 +24,8 @@
       </li>
     </ul>
     <div v-if="selectedItems.length > 0" class="flex gap-4 justify-stretch">
-      <button class="bg-green-200 p-2 w-full rounded-md" @click="applySelectedItems">
-        {{ shopping_list_view__apply_items() }}
+      <button class="bg-green-200 p-2 w-full rounded-md" @click="moveSelectedItemsToStock">
+        {{ shopping_list_view__move_items_to_stock() }}
       </button>
       <button class="bg-red-200 p-2 w-full rounded-md" @click="removeSelectedItems">
         {{ shopping_list_view__remove_items() }}
@@ -35,12 +35,16 @@
       <div class="relative w-full">
         <input
           type="text"
-          class="w-full border p-3 rounded shadow-md outline-indigo-200 outline-offset-2"
+          class="w-full border p-3 rounded shadow-md outline-indigo-200 outline-offset-2 hide-dropdown-icon"
           :label="shopping_list_view__item_input_label()"
           :placeholder="shopping_list_view__item_input_placeholder()"
+          list="stock-items"
           v-model.trim="shoppingItem"
           @keyup.enter="addItemToList"
         />
+        <datalist id="stock-items">
+          <option v-for="item of stockItems" :key="item.id" :value="item.title"></option>
+        </datalist>
         <button
           v-if="shoppingItem.length"
           :class="[
@@ -75,7 +79,11 @@ import CheckBoxBlankCircleOutlineIcon from "~icons/CheckBoxBlankCircleOutline.vu
 import CheckCircleIcon from "~icons/CheckCircle.vue"
 import CloseIcon from "~icons/Close.vue"
 
-import { type ShoppingItem, useHomeStore } from "~/stores/homes"
+import { type ShoppingItem } from "~/stores/homes"
+import { useShoppingListStore } from "~/stores/shopping-list"
+import { useStockStore } from "~/stores/stock"
+
+import { useToast } from "~/composables/toast"
 import { useRoute } from "vue-router"
 
 import { generateId } from "~/utils/id-generator"
@@ -83,15 +91,20 @@ import { generateId } from "~/utils/id-generator"
 import {
   shopping_list_view__item_input_label,
   shopping_list_view__item_input_placeholder,
-  shopping_list_view__apply_items,
+  shopping_list_view__move_items_to_stock,
   shopping_list_view__remove_items,
   shopping_list_view__clear_input_button_aria_label,
-  shopping_list_view__add_item_button_aria_label
+  shopping_list_view__add_item_button_aria_label,
+  shopping_list_view__toast_item_moved_to_stock,
+  shopping_list_view__toast_items_moved_to_stock,
+  shopping_list_view__toast_item_removed,
+  shopping_list_view__toast_items_removed
 } from "~translations"
 
-const homeStore = useHomeStore()
+const shoppingListStore = useShoppingListStore()
 
 const route = useRoute()
+const toast = useToast()
 
 const currentHomeId = route.params.id as string
 
@@ -116,10 +129,14 @@ const clearShoppingItemInput = () => {
   shoppingItem.value = ""
 }
 
-const items = computed(() => homeStore.shoppingList(currentHomeId))
+const items = computed(() => shoppingListStore.shoppingList(currentHomeId))
+
+const stockStore = useStockStore()
+
+const stockItems = stockStore.stockItems(currentHomeId)
 
 const addItemToList = () => {
-  const existingItem = homeStore
+  const existingItem = stockStore
     .stockItems(currentHomeId)
     .find((item) => item.title === shoppingItem.value)
 
@@ -131,31 +148,61 @@ const addItemToList = () => {
         quantity: 1
       }
 
-  homeStore.addToShoppingList(currentHomeId, item)
+  shoppingListStore.addToShoppingList(currentHomeId, item)
   clearShoppingItemInput()
 }
 
-const applyItem = (item: ShoppingItem) => {
-  homeStore.removeFromShoppingList(currentHomeId, item)
-  homeStore.addToStock(currentHomeId, item)
+const moveItemToStock = (item: ShoppingItem, notify: boolean = true) => {
+  shoppingListStore.removeFromShoppingList(currentHomeId, item)
+  stockStore.addToStock(currentHomeId, item)
+
+  if (notify) {
+    toast.addToast(shopping_list_view__toast_item_moved_to_stock({ title: item.title }), {
+      color: "green"
+    })
+  }
 }
 
-const removeItem = (item: ShoppingItem) => {
-  homeStore.removeFromShoppingList(currentHomeId, item)
+const removeItem = (item: ShoppingItem, notify: boolean = true) => {
+  shoppingListStore.removeFromShoppingList(currentHomeId, item)
+
+  if (notify) {
+    toast.addToast(shopping_list_view__toast_item_removed({ title: item.title }), {
+      color: "red"
+    })
+  }
 }
 
-const applySelectedItems = () => {
-  items.value
-    .filter((item) => selectedItems.value.includes(item.id))
-    .forEach((item) => applyItem(item))
+const moveSelectedItemsToStock = () => {
+  const itemsToMove = items.value.filter((item) => selectedItems.value.includes(item.id))
+
+  const notifyIndividually = itemsToMove.length < 3
+
+  if (!notifyIndividually) {
+    const items = itemsToMove.map((item) => item.title).join(", ")
+    toast.addToast(shopping_list_view__toast_items_moved_to_stock({ items }), {
+      color: "green"
+    })
+  }
+
+  itemsToMove.forEach((item) => moveItemToStock(item, notifyIndividually))
 
   cleanSelectedItems()
 }
 
 const removeSelectedItems = () => {
-  items.value
-    .filter((item) => selectedItems.value.includes(item.id))
-    .forEach((item) => removeItem(item))
+  const itemsToRemove = items.value.filter((item) => selectedItems.value.includes(item.id))
+
+  const notifyIndividually = itemsToRemove.length < 3
+
+  if (!notifyIndividually) {
+    const items = itemsToRemove.map((item) => item.title).join(", ")
+    toast.addToast(shopping_list_view__toast_items_removed({ items }), {
+      color: "red"
+    })
+  }
+
+  itemsToRemove.forEach((item) => removeItem(item, notifyIndividually))
 
   cleanSelectedItems()
 }
@@ -164,5 +211,10 @@ const removeSelectedItems = () => {
 <style scoped>
 .shopping-list-view-grid-rows {
   grid-template-rows: 1fr auto;
+}
+
+.hide-dropdown-icon::-webkit-calendar-picker-indicator,
+.hide-dropdown-icon::-webkit-list-button {
+  color: transparent;
 }
 </style>
