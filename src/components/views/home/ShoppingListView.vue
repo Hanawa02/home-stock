@@ -33,39 +33,31 @@
     </div>
     <div class="flex gap-4 py-4 items-center">
       <div class="relative w-full">
-        <input
-          type="text"
-          class="w-full border p-3 rounded shadow-md outline-indigo-200 outline-offset-2 hide-dropdown-icon"
+        <TextInput
           :label="shopping_list_view__item_input_label()"
           :placeholder="shopping_list_view__item_input_placeholder()"
           list="stock-items"
-          v-model.trim="shoppingItem"
+          v-model="shoppingItem"
           @keyup.enter="addItemToList"
         />
         <datalist id="stock-items">
           <option v-for="item of stockItems" :key="item.id" :value="item.title"></option>
         </datalist>
-        <button
+
+        <CloseButton
           v-if="shoppingItem.length"
-          :class="[
-            'absolute right-1 top-1 w-10 h-10 ',
-            'p-2 flex justify-center items-center flex-shrink-0 rounded-full',
-            'bg-transparent text-indigo-700 hover:text-white hover:bg-indigo-700 hover:shadow-card'
-          ]"
+          class="absolute right-1 top-1"
           :aria-label="shopping_list_view__clear_input_button_aria_label()"
           @click="clearShoppingItemInput"
-        >
-          <CloseIcon class="w-6 h-6 md:w-8 md:h-8" />
-        </button>
+        />
       </div>
-      <button
+      <IconButton
         :disabled="!shoppingItem"
         :area-label="shopping_list_view__add_item_button_aria_label()"
-        class="disabled:bg-slate-300 p-2 flex justify-center items-center bg-indigo-700 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 text-white rounded-full hover:bg-indigo-500 shadow-card"
         @click="addItemToList"
       >
         <PlusIcon class="w-6 h-6 md:w-8 md:h-8" />
-      </button>
+      </IconButton>
     </div>
   </section>
 </template>
@@ -77,7 +69,10 @@ import PlusIcon from "~icons/Plus.vue"
 import DeleteIcon from "~icons/Delete.vue"
 import CheckBoxBlankCircleOutlineIcon from "~icons/CheckBoxBlankCircleOutline.vue"
 import CheckCircleIcon from "~icons/CheckCircle.vue"
-import CloseIcon from "~icons/Close.vue"
+
+import TextInput from "~/components/atoms/TextInput.vue"
+import CloseButton from "~/components/atoms/buttons/CloseButton.vue"
+import IconButton from "~/components/atoms/buttons/IconButton.vue"
 
 import { type ShoppingItem } from "~/stores/homes"
 import { useShoppingListStore } from "~/stores/shopping-list"

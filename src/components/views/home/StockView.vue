@@ -33,35 +33,28 @@
     </div>
     <div class="flex gap-4 py-4 items-center">
       <div class="relative w-full">
-        <input
-          type="text"
-          class="w-full border p-3 rounded shadow-md outline-green-200 outline-offset-2"
+        <TextInput
           :label="stock_view__item_input_label()"
           :placeholder="stock_view__item_input_placeholder()"
-          v-model.trim="shoppingItem"
+          v-model.trim="stockItem"
           @keyup.enter="addItemToStock"
         />
-        <button
-          v-if="shoppingItem.length"
-          :class="[
-            'absolute right-1 top-1 w-10 h-10 ',
-            'p-2 flex justify-center items-center flex-shrink-0 rounded-full',
-            'bg-transparent text-green-700 hover:text-white hover:bg-green-700 hover:shadow-card'
-          ]"
+
+        <CloseButton
+          v-if="stockItem.length"
+          class="absolute right-1 top-1"
           :aria-label="stock_view__clear_input_button_aria_label()"
           @click="clearShoppingItemInput"
-        >
-          <CloseIcon class="w-6 h-6 md:w-8 md:h-8" />
-        </button>
+        />
       </div>
-      <button
-        :disabled="!shoppingItem"
+      <IconButton
+        :disabled="!stockItem"
         :area-label="stock_view__add_item_button_aria_label()"
-        class="disabled:bg-slate-300 p-2 flex justify-center items-center bg-green-700 flex-shrink-0 w-10 h-10 md:w-12 md:h-12 text-white rounded-full hover:bg-green-500 shadow-card"
         @click="addItemToStock"
+        color="green"
       >
         <PlusIcon class="w-6 h-6 md:w-8 md:h-8" />
-      </button>
+      </IconButton>
     </div>
   </section>
 </template>
@@ -73,7 +66,10 @@ import PlusIcon from "~icons/Plus.vue"
 import DeleteIcon from "~icons/Delete.vue"
 import CheckBoxBlankCircleOutlineIcon from "~icons/CheckBoxBlankCircleOutline.vue"
 import CheckCircleIcon from "~icons/CheckCircle.vue"
-import CloseIcon from "~icons/Close.vue"
+
+import CloseButton from "~/components/atoms/buttons/CloseButton.vue"
+import TextInput from "~/components/atoms/TextInput.vue"
+import IconButton from "~/components/atoms/buttons/IconButton.vue"
 
 import { type StockItem } from "~/stores/homes"
 import { useStockStore } from "~/stores/stock"
@@ -120,10 +116,10 @@ const cleanSelectedItems = () => {
   selectedItems.value = []
 }
 
-const shoppingItem = ref("")
+const stockItem = ref("")
 
 const clearShoppingItemInput = () => {
-  shoppingItem.value = ""
+  stockItem.value = ""
 }
 
 const items = computed(() => stockStore.stockItems(currentHomeId))
@@ -131,7 +127,7 @@ const items = computed(() => stockStore.stockItems(currentHomeId))
 const addItemToStock = () => {
   const item: StockItem = {
     id: generateId(),
-    title: shoppingItem.value,
+    title: stockItem.value,
     idealStock: 0,
     inStock: 0
   }

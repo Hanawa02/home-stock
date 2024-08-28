@@ -7,7 +7,7 @@
 
     <RouterView />
 
-    <BottomMenu :menu-items="menuItems" class="z-50" />
+    <BottomMenu :menu-items="menuItems" class="z-50" :replace="true" />
   </main>
 </template>
 

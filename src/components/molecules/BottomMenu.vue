@@ -5,6 +5,7 @@
         <li v-for="menu in menuItems" :key="menu.label" class="w-full">
           <router-link
             :to="{ name: menu.routeName, params: menu.routeParams }"
+            :replace="replace"
             class="flex flex-col items-center group mx-auto"
             exactActiveClass="cursor-disabled text-indigo-800 font-semibold"
             inactiveClass="text-zinc-600"
@@ -35,7 +36,10 @@ export type MenuItem = {
 
 type IProps = {
   menuItems: MenuItem[]
+  replace?: boolean
 }
 
-defineProps<IProps>()
+withDefaults(defineProps<IProps>(), {
+  replace: false
+})
 </script>
